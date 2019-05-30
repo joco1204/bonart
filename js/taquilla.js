@@ -2,7 +2,7 @@ $(function(){
 
 	$.ajax({
 		type: 'post',
-		url: '../controller/ctrpedido.php',
+		url: '../controller/ctrtaquilla.php',
 		data: {
 			action: 'consultar',
 		},

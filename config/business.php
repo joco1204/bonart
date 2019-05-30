@@ -13,6 +13,7 @@ include '../../'.PATH_MODEL.'/usuarios.php';
 include '../../'.PATH_MODEL.'/tarifa.php';
 include '../../'.PATH_MODEL.'/salaexposicion.php';
 include '../../'.PATH_MODEL.'/artista.php';
+include '../../'.PATH_MODEL.'/taquilla.php';
 //Business class
 class Business{
 	public $return;

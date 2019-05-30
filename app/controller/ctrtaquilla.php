@@ -1,25 +1,25 @@
 <?php
 include '../../config/business.php';
 $business = new Business();
-$producto = new Pedido();
+$taquilla = new Taquilla();
 $post = $business->post;
 //Validate the existence of the action
 if(isset($post->action)){
 	switch ($post->action){
 		case 'consultar':
-			$result = $producto->consultar();
+			$result = $taquilla->consultar();
 			$business->return = $result;
 		break;
 		case 'crear':
-			$result = $producto->crear($post);
+			$result = $taquilla->crear($post);
 			$business->return = $result;
 		break;
 		case 'modificar':
-			$result = $producto->modificar($post);
+			$result = $taquilla->modificar($post);
 			$business->return = $result;
 		break;
 		case 'eliminar':
-			$result = $producto->eliminar($post);
+			$result = $taquilla->eliminar($post);
 			$business->return = $result;
 		break;
 		default:

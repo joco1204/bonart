@@ -52,9 +52,7 @@ $(function(){
 				swal('Error!',result.msg,'error');
 				console.log('Error: '+result.msg);
 			}
-
 		});
-
 	});
 });
 
