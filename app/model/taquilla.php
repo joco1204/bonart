@@ -10,7 +10,7 @@ class Taquilla{
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT a.id, b.tipo_identificacion, a.identificacion, a.nombre, a.telefono, a.email, c.categoria AS tarifa, a.fecha_taquilla FROM re_cliente_taquilla AS a LEFT JOIN pa_tipo_identificacion AS b ON a.id_tipo_identificacion = b.id LEFT JOIN pa_tarifa AS c ON a.id_tarifa = c.id;";
+			$query = "SELECT a.id, b.tipo_identificacion, a.identificacion, a.nombre, a.telefono, a.email, c.categoria AS tarifa, a.fecha_taquilla FROM re_cliente_taquilla AS a LEFT JOIN pa_tipo_identificacion AS b ON a.id_tipo_identificacion = b.id LEFT JOIN pa_tarifa AS c ON a.id_tarifa = c.id WHERE a.fecha_taquilla = '".$this->business->date."';";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
@@ -34,11 +34,11 @@ class Taquilla{
 		$db = $this->business->db;
 		//Valida conexión a base de datos
 		if($conn){
-			$query  = "";
+			$query  = "INSERT INTO re_cliente_taquilla (id_tipo_identificacion, identificacion, nombre, telefono, email, id_tarifa, fecha_taquilla) VALUES ('".$data->tipo_identificacion."', '".$data->numero_identificacion."', '".$data->nombre."', '".$data->telefono."', '".$data->email."', '".$data->tarifa."', '".$this->business->date."');";
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha creado al taquilla correctamente';
+				$this->business->return->msg = 'Se ha creado al taquilla de cliente correctamente';
 			} else {
 				$this->business->return->bool = false;
 				$this->business->return->msg = 'Error query';
