@@ -1,5 +1,5 @@
 <?php 
-class Tarifa{
+class Taquilla{
 	function __construct(){
 		$this->business = new Business();
 	}
@@ -10,7 +10,7 @@ class Tarifa{
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT id, categoria, precio FROM pa_tarifa;";
+			$query = "SELECT a.id, b.tipo_identificacion, a.identificacion, a.nombre, a.telefono, a.email, c.categoria AS tarifa, a.fecha_taquilla FROM re_cliente_taquilla AS a LEFT JOIN pa_tipo_identificacion AS b ON a.id_tipo_identificacion = b.id LEFT JOIN pa_tarifa AS c ON a.id_tarifa = c.id;";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
@@ -20,7 +20,7 @@ class Tarifa{
 				$this->business->return->msg = json_encode($arrayTabla);
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Erro al consultar producto';
+				$this->business->return->msg = 'Erro al consultar de taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -34,11 +34,11 @@ class Tarifa{
 		$db = $this->business->db;
 		//Valida conexión a base de datos
 		if($conn){
-			$query  = "INSERT INTO pa_tarifa (categoria, precio) VALUES ('".$data->categoria."', '".$data->precio."');";
+			$query  = "";
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha creado tarifa correctamente';
+				$this->business->return->msg = 'Se ha creado al taquilla correctamente';
 			} else {
 				$this->business->return->bool = false;
 				$this->business->return->msg = 'Error query';
@@ -59,10 +59,10 @@ class Tarifa{
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha actualizado la tarifa correctamente';
+				$this->business->return->msg = 'Se ha actualizado la taquilla correctamente';
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Error al actualizar tarifa';
+				$this->business->return->msg = 'Error al actualizar taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -80,10 +80,10 @@ class Tarifa{
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha eliminado la tarifa correctamente';
+				$this->business->return->msg = 'Se ha eliminado la taquilla correctamente';
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Error al actualizar producto';
+				$this->business->return->msg = 'Error al eliminar taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -92,13 +92,13 @@ class Tarifa{
 		return $this->business->return;
 	}
 
-	public function lista_tarifa(){
+	public function tipo_obra(){
 		$conn = $this->business->conn;
 		$db = $this->business->db;
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT id, categoria FROM pa_tarifa;";
+			$query = "SELECT id, tipo FROM pa_tipo_obra;";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
@@ -108,7 +108,7 @@ class Tarifa{
 				$this->business->return->msg = json_encode($arrayTabla);
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Erro al consultar tarifa';
+				$this->business->return->msg = 'Erro al consultar tipo de obra';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -117,13 +117,13 @@ class Tarifa{
 		return $this->business->return;
 	}
 
-	public function tarifa_precio($data){
+	public function sala_exposicion(){
 		$conn = $this->business->conn;
 		$db = $this->business->db;
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT id, categoria, precio FROM pa_tarifa WHERE id = '".$data->id_tarifa."';";
+			$query = "SELECT id, sala FROM re_sala_exposicion;";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
@@ -133,7 +133,7 @@ class Tarifa{
 				$this->business->return->msg = json_encode($arrayTabla);
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Erro al consultar tarifa';
+				$this->business->return->msg = 'Erro al consultar tipo de obra';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -143,3 +143,4 @@ class Tarifa{
 	}
 }
 ?>
+

@@ -22,6 +22,14 @@ if(isset($post->action)){
 			$result = $tarifa->eliminar($post);
 			$business->return = $result;
 		break;
+		case 'lista_tarifa':
+			$result = $tarifa->lista_tarifa();
+			$business->return = $result;
+		break;
+		case 'tarifa_precio':
+			$result = $tarifa->tarifa_precio($post);
+			$business->return = $result;
+		break;
 		default:
 			$business->return->bool = false;
 			$business->return->msg = 'Acción No Encontrada';
