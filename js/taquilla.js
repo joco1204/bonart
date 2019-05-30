@@ -1,8 +1,9 @@
 $(function(){
 
+//Ajax tabla kardex
 	$.ajax({
 		type: 'post',
-		url: '../controller/ctrpedido.php',
+		url: '../controller/ctrtaquilla.php',
 		data: {
 			action: 'consultar',
 		},
@@ -15,10 +16,13 @@ $(function(){
 			html += '<thead>';
 			html += '<tr>';
 			html += '<th>ID</th>';
-			html += '<th>MENU</th>';
-			html += '<th>MESA</th>';
-			html += '<th>PRECIO TOTAL</th>';
-			html += '<th>ESTADO</th>';
+			html += '<th>TIPO IDENTIFICACIÓN</th>';
+			html += '<th>IDENTIFICACIÓN</th>';
+			html += '<th>NOMBRE</th>';
+			html += '<th>TELÉFONOS</th>';
+			html += '<th>EMAIL</th>';
+			html += '<th>TARIFA</th>';
+			html += '<th>FECHA</th>';
 			html += '<th></th>';
 			html += '</tr>';
 			html += '</thead>';
@@ -27,10 +31,13 @@ $(function(){
 			$.each(data, function(i, row){
 				html += '<tr>';
 				html += '<td>'+row.id+'</td>';
-				html += '<td>'+row.menu+'</td>';
-				html += '<td>'+row.numero_mesa+'</td>';
-				html += '<td>'+row.precio_total+'</td>';
-				html += '<td>'+row.estado+'</td>';
+				html += '<td>'+row.tipo_identificacion+'</td>';
+				html += '<td>'+row.identificacion+'</td>';
+				html += '<td>'+row.nombre+'</td>';
+				html += '<td>'+row.telefonos+'</td>';
+				html += '<td>'+row.email+'</td>';
+				html += '<td>'+row.tarifa+'</td>';
+				html += '<td>'+row.fecha_taquilla+'</td>';
 				html += '<td><button type="button" class="btn btn-success btn-sm" title="Modificar"><span class="glyphicon glyphicon-pencil"></span></button></td>';
 				html += '</tr>';
 			});
@@ -39,10 +46,13 @@ $(function(){
 			html += '<tfoot>';
 			html += '<tr>';
 			html += '<th>ID</th>';
-			html += '<th>MENU</th>';
-			html += '<th>MESA</th>';
-			html += '<th>PRECIO TOTAL</th>';
-			html += '<th>ESTADO</th>';
+			html += '<th>TIPO IDENTIFICACIÓN</th>';
+			html += '<th>IDENTIFICACIÓN</th>';
+			html += '<th>NOMBRE</th>';
+			html += '<th>TELÉFONOS</th>';
+			html += '<th>EMAIL</th>';
+			html += '<th>TARIFA</th>';
+			html += '<th>FECHA</th>';
 			html += '<th></th>';
 			html += '</tr>';
 			html += '</tfoot>';
@@ -78,7 +88,6 @@ $(function(){
 				    }
 				}
 			});
-			$("select").select2();
 		} else {
 			console.log('Error: '+result.msg);
 		}
