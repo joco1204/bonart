@@ -21,7 +21,7 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
             <section class='content'>
                 <div class="row">
                     <div class="col col-md-12 text-center">
-						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#crear_tarifa">Crear Producto</button>
+						<button type="button" class="btn btn-success" data-toggle="modal" data-target="#crear_tarifa">Crear Tarifa</button>
                         <button type="button" class="btn btn-danger" onclick="javascript: pageContent('admin/index');">Volver</button>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
             <form id="crear" autocomplete="off">
                 <div class="modal-header bg-blue text-center">
                     <button type="button" class="close" data-dismiss="modal"><span style="color: #fff">X</span></button>
-                    <h4 class="modal-title"><b>Producto</b></h4>
+                    <h4 class="modal-title"><b>Tarifa</b></h4>
                     <input type="hidden" id="action" name="action" value="crear">
                 </div>
                 <div class="modal-body">
