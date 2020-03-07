@@ -40,10 +40,20 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
 					    </div>
 
 					    <div class="row">
-							<div class="col-lg-6">
+							<div class="col-lg-12">
 								<div class="form-group has-feedback">
 									<label for="nombre" class="control-label">Nombre:</label>
 				                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de artista" required="" data-error="Debe ingresar nombre del artista">
+				                    <div class="help-block with-errors"></div>
+								</div>
+							</div>
+					    </div>
+
+					    <div class="row">
+							<div class="col-lg-6">
+								<div class="form-group has-feedback">
+									<label for="direccion" class="control-label">Dirección:</label>
+				                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese dirección" required="" data-error="Debe ingresar nombre de un menú">
 				                    <div class="help-block with-errors"></div>
 								</div>
 							</div>
