@@ -123,7 +123,7 @@ class Tarifa{
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT precio FROM pa_tarifa WHERE id = '".$data->id_tarifa."';";
+			$query = "SELECT id, categoria, precio FROM pa_tarifa WHERE id = '".$data->id_tarifa."';";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
