@@ -91,7 +91,7 @@ $(function(){
 					confirmButtonText: "Aceptar",
 					closeOnConfirm: true,
 				},function(){
-					pageContent('artista/index');
+					pageContent('taquilla/index');
 				});
 			} else {
 

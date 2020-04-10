@@ -9,7 +9,7 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
 }
 ?>
 <section class="content-header text-center">
-    <button type="button" class="btn btn-danger" onclick="javascript: pageContent('pedido/index'); ">Volver</button>
+    <button type="button" class="btn btn-danger" onclick="javascript: pageContent('taquilla/index'); ">Volver</button>
 </section>
 <section class="content">
 	<div class="row">
@@ -40,20 +40,10 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
 					    </div>
 
 					    <div class="row">
-							<div class="col-lg-12">
-								<div class="form-group has-feedback">
-									<label for="nombre" class="control-label">Nombre:</label>
-				                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de artista" required="" data-error="Debe ingresar nombre del artista">
-				                    <div class="help-block with-errors"></div>
-								</div>
-							</div>
-					    </div>
-
-					    <div class="row">
 							<div class="col-lg-6">
 								<div class="form-group has-feedback">
-									<label for="direccion" class="control-label">Dirección:</label>
-				                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese dirección" required="" data-error="Debe ingresar nombre de un menú">
+									<label for="nombre" class="control-label">Nombre:</label>
+				                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre de cliente" required="" data-error="Debe ingresar nombre del artista">
 				                    <div class="help-block with-errors"></div>
 								</div>
 							</div>
@@ -77,7 +67,7 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
 							<div class="col-lg-6">
 								<div class="form-group has-feedback">
 									<label for="tarifa" class="control-label">Tarifa:</label>
-				                    <select name="tipo_identificacion" id="tarifa" class="form-control" data-error="Debe seleccionar tarifa" required="">
+				                    <select name="tarifa" id="tarifa" class="form-control" data-error="Debe seleccionar tarifa" required="">
 			                        </select>
 				                    <div class="help-block with-errors"></div>
 								</div>

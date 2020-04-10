@@ -29,7 +29,7 @@
     <?php } ?>
     <?php if($session->getSession('id_perfil') == '1' || $session->getSession('id_perfil') == '4'){ ?>
         <li class="treeview bg-red">
-            <a href="#" onclick="javascript: pageContent('venta/index');">
+            <a href="#" onclick="javascript: pageContent('ventas/index');">
                 <i class="ion ion-android-cart"></i>
                 <span class="bg-red">VENTAS</span>
             </a>

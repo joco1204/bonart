@@ -10,7 +10,7 @@ class Taquilla{
 		//Valida conexión a base de datos
 		if($conn){
 			$arrayTabla = array();
-			$query = "SELECT a.id, b.tipo_identificacion, a.identificacion, a.nombre, a.direccion, a.telefonos, a.pais, a.ciudad FROM re_datos_artista AS a LEFT JOIN pa_tipo_identificacion AS b ON a.id_tipo_identificacion = b.id;";
+			$query = "SELECT a.id, b.tipo_identificacion, a.identificacion, a.nombre, a.telefono, a.email, c.categoria AS tarifa, a.fecha_taquilla FROM re_cliente_taquilla AS a LEFT JOIN pa_tipo_identificacion AS b ON a.id_tipo_identificacion = b.id LEFT JOIN pa_tarifa AS c ON a.id_tarifa = c.id WHERE a.fecha_taquilla = '".$this->business->date."';";
 			$result = $conn->query($query);
 			if($result){
 				while($row = $result->fetch(PDO::FETCH_OBJ)){
@@ -20,7 +20,7 @@ class Taquilla{
 				$this->business->return->msg = json_encode($arrayTabla);
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Erro al consultar de artista';
+				$this->business->return->msg = 'Erro al consultar de taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -34,25 +34,11 @@ class Taquilla{
 		$db = $this->business->db;
 		//Valida conexión a base de datos
 		if($conn){
-			$query  = "INSERT INTO re_datos_artista (id_tipo_identificacion, identificacion, nombre, direccion, telefonos, pais, ciudad) VALUES ('".$data->tipo_identificacion."', '".$data->numero_identificacion."', '".$data->nombre."', '".$data->direccion."', '".$data->telefono."', '".$data->pais."', '".$data->ciudad."');";
+			$query  = "INSERT INTO re_cliente_taquilla (id_tipo_identificacion, identificacion, nombre, telefono, email, id_tarifa, fecha_taquilla) VALUES ('".$data->tipo_identificacion."', '".$data->numero_identificacion."', '".$data->nombre."', '".$data->telefono."', '".$data->email."', '".$data->tarifa."', '".$this->business->date."');";
 			$result = $conn->query($query);
 			if($result){
-				$id_artista = $conn->lastInsertId();
-				for ($i = 1; $i <= $data->numero_obras; $i++){
-					$tipo_obra 		= 'tipo_obra_'.$i;
-					$nombre_obra 	= 'nombre_obra_'.$i;
-					$en_venta 		= 'en_venta_'.$i;
-					$precio 		= 'precio_'.$i;
-					$sala_exposicion = 'sala_exposicion_'.$i;
-					$posicion 		= 'posicion_'.$i;
-					$query_obra = "INSERT INTO re_obra_arte (id_tipo_obra, nombre, id_artista, venta, precio, disponible) VALUES ('".$data->$tipo_obra."', '".$data->$nombre_obra."', '".$id_artista."', '".$data->$en_venta."', '".$data->$precio."', 'si');";
-					$conn->query($query_obra);
-					$id_obra = $conn->lastInsertId();
-					$query_sala_obra = "INSERT INTO re_obra_sala (id_sala, id_obra, posicion, fecha_exposicion, estado) VALUES ('".$data->$sala_exposicion."', '".$id_obra."', '".$data->$posicion ."', '".$this->business->date."', 'activo');";
-					$conn->query($query_sala_obra);
-				}
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha creado al artista correctamente';
+				$this->business->return->msg = 'Se ha creado al taquilla de cliente correctamente';
 			} else {
 				$this->business->return->bool = false;
 				$this->business->return->msg = 'Error query';
@@ -73,10 +59,10 @@ class Taquilla{
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha actualizado al artista correctamente';
+				$this->business->return->msg = 'Se ha actualizado la taquilla correctamente';
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Error al actualizar Menu';
+				$this->business->return->msg = 'Error al actualizar taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
@@ -94,10 +80,10 @@ class Taquilla{
 			$result = $conn->query($query);
 			if($result){
 				$this->business->return->bool = true;
-				$this->business->return->msg = 'Se ha eliminado al artista correctamente';
+				$this->business->return->msg = 'Se ha eliminado la taquilla correctamente';
 			} else {
 				$this->business->return->bool = false;
-				$this->business->return->msg = 'Error al actualizar producto';
+				$this->business->return->msg = 'Error al eliminar taquilla';
 			}
 		} else {
 			$this->business->return->bool = false;
