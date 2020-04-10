@@ -99,8 +99,8 @@ class Usuario{
 			if($row_ident->count_identificaicon == '0'){
 				if ($row_usua->count_usuario == '0'){
 					$pass = sha1($data->contrasena);
-					$query  = "INSERT INTO re_usuarios (usuario, password, tipo_identificacion, identificacion, nombre, apellido1, apellido2, email, estado) ";
-					$query .= "VALUES ('".$data->usaurio."', '".$pass."', '".$data->tipo_identificacion."', '".$data->identificacion."', '".$data->nombres."', '".$data->apellidos1."', '".$data->apellidos2."', '".$data->email."', 'activo');";
+					$query  = "INSERT INTO re_usuarios (usuario, password, tipo_identificacion, identificacion, nombre, apellido1, apellido2, estado) ";
+					$query .= "VALUES ('".$data->usaurio."', '".$pass."', '".$data->tipo_identificacion."', '".$data->identificacion."', '".$data->nombres."', '".$data->apellidos1."', '".$data->apellidos2."', 'activo');";
 					$result = $conn->query($query);
 					if($result){
 						//Id de usuario

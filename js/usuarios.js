@@ -94,6 +94,48 @@ $(function(){
 		}
 	});
 
+	$.ajax({
+		type: 'post',
+		url: '../controller/ctrusuarios.php',
+		data: {
+			action: 'tipo_identificacion',
+		},
+		dataType: 'json'
+	}).done(function(result){
+		if(result.bool){
+			var data = $.parseJSON(result.msg);
+			var html = '';
+			html += '<option value=""></option>';
+			$.each(data, function(i, row){
+				html += '<option value="'+row.id+'">'+row.tipo_identificacion+'</option>';
+			});
+			$('#tipo_identificacion').html(html);
+		} else {
+			console.log('Error: '+result.msg);
+		}
+	});
+
+	$.ajax({
+		type: 'post',
+		url: '../controller/ctrusuarios.php',
+		data: {
+			action: 'perfil',
+		},
+		dataType: 'json'
+	}).done(function(result){
+		if(result.bool){
+			var data = $.parseJSON(result.msg);
+			var html = '';
+			html += '<option value=""></option>';
+			$.each(data, function(i, row){
+				html += '<option value="'+row.id+'">'+row.perfil+'</option>';
+			});
+			$('#perfil').html(html);
+		} else {
+			console.log('Error: '+result.msg);
+		}
+	});
+
 	$('#usuario_form').submit(function(e){
 		e.preventDefault();
 		var data = $(this).serialize();

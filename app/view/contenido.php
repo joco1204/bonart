@@ -55,7 +55,7 @@ if(!$session->getSession('token') || $session->getSession('token') == ''){
         <?php } ?>
         <?php if($session->getSession('id_perfil') == '1' || $session->getSession('id_perfil') == '4'){ ?>
             <div class="col-lg-3">
-                <div class="small-box bg-red" onclick="javascript: pageContent('venta/index');" style="cursor: pointer;">
+                <div class="small-box bg-red" onclick="javascript: pageContent('ventas/index');" style="cursor: pointer;">
                     <div class="inner">
                         <h2>VENTAS</h2>
                         <p style="color: #dd4b39;">3</p>
